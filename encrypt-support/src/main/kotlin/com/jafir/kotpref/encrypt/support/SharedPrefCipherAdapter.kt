@@ -11,10 +11,10 @@ constructor(context: Context) : CipherAdapter {
     private val secretKey: SecretKey = AESUtil.generateKey(context)
 
     override fun encrypt(encode: String): String {
-        return AESUtil.execEncrypted(secretKey, encode)
+        return AESUtil.execEncrypted(secretKey, encode)!!
     }
 
     override fun decrypt(decode: String): String {
-        return AESUtil.execDecrypted(secretKey, decode)
+        return AESUtil.execDecrypted(secretKey, decode)!!
     }
 }
