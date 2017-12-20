@@ -2,8 +2,6 @@ package com.jafir.kotpref.encrypt.sample
 
 import com.chibatching.kotpref.KotprefModel
 import com.chibatching.kotpref.enumpref.enumValuePref
-import com.chibatching.kotpref.gsonpref.gsonNullablePref
-import com.chibatching.kotpref.gsonpref.gsonPref
 import com.jafir.kotpref.encrypt.support.*
 import java.util.*
 

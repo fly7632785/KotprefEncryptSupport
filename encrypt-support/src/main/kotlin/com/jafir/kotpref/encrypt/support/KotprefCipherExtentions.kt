@@ -123,13 +123,46 @@ inline fun KotprefModel.ecBooleanPref(default: Boolean = false, key: Int)
 /**
  * Gson object to serialize and deserialize delegated property
  */
-var Kotpref.ecGson: Gson?
+
+var Kotpref.gson: Gson?
     get() {
-        return KotprefGsonHolder.ecGson
+        return KotprefGsonHolder.gson
     }
     set(value) {
-        KotprefGsonHolder.ecGson = value
+        KotprefGsonHolder.gson = value
     }
+
+/**
+ * Delegate shared preferences property serialized and deserialized by gson
+ * @param default default gson object value
+ * @param key custom preferences key
+ */
+inline fun <reified T : Any> KotprefModel.gsonPref(default: T, key: String? = null)
+        : ReadWriteProperty<KotprefModel, T> = GsonPref(T::class, default, key)
+
+/**
+ * Delegate shared preferences property serialized and deserialized by gson
+ * @param default default gson object value
+ * @param key custom preferences key resource id
+ */
+inline fun <reified T : Any> KotprefModel.gsonPref(default: T, key: Int)
+        : ReadWriteProperty<KotprefModel, T> = GsonPref(T::class, default, context.getString(key))
+
+/**
+ * Delegate shared preferences property serialized and deserialized by gson
+ * @param default default gson object value
+ * @param key custom preferences key
+ */
+inline fun <reified T : Any> KotprefModel.gsonNullablePref(default: T? = null, key: String? = null)
+        : ReadWriteProperty<KotprefModel, T?> = GsonNullablePref(T::class, default, key)
+
+/**
+ * Delegate shared preferences property serialized and deserialized by gson
+ * @param default default gson object value
+ * @param key custom preferences key resource id
+ */
+inline fun <reified T : Any> KotprefModel.gsonNullablePref(default: T? = null, key: Int)
+        : ReadWriteProperty<KotprefModel, T?> = GsonNullablePref(T::class, default, context.getString(key))
 
 /**
  * Delegate shared preferences property serialized and deserialized by gson

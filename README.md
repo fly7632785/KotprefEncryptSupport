@@ -15,20 +15,20 @@ allprojects {
 ```
 ```groovy
 dependencies {
-    compile 'com.github.fly7632785:KotprefEncryptSupport:1.0.0'
+    compile 'com.github.fly7632785:KotprefEncryptSupport:1.0.1'
 }
 ```
 
 ### Set up
 
-Pass the application context to Kotpref
-
+It includes gson-support, so ,if you use this lib, you can instead gson-support.
 ```kotlin
 class SampleApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+        Kotpref.init(applicationContext)
         // add Encrypt Support 
-        Kotpref.ecGson = Gson()
+        Kotpref.gson = Gson()
         Kotpref.cipherAdapter = SharedPrefCipherAdapter(applicationContext)
     }
 }
@@ -45,6 +45,7 @@ class SampleApplication : Application() {
     var avatar21 by ecGsonPref(Avatar())
     var avatar22 by ecGsonNullablePref(Avatar())
 ```
+Support Int,String,Boolean,Long,Float,Gson
 ###  Advanced
 
 If you want to custom your Cipher rules

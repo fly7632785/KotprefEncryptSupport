@@ -4,5 +4,5 @@ import com.google.gson.Gson
 
 
 internal object KotprefGsonHolder {
-    var ecGson: Gson? = null
+    var gson: Gson? = null
 }

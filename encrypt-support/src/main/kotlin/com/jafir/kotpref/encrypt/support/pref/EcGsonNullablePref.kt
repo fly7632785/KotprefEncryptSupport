@@ -4,7 +4,7 @@ import android.content.SharedPreferences
 import com.chibatching.kotpref.Kotpref
 import com.chibatching.kotpref.pref.AbstractPref
 import com.jafir.kotpref.encrypt.support.cipherAdapter
-import com.jafir.kotpref.encrypt.support.ecGson
+import com.jafir.kotpref.encrypt.support.gson
 import kotlin.reflect.KClass
 import kotlin.reflect.KProperty
 
@@ -30,7 +30,7 @@ class EcGsonNullablePref<T : Any>(val targetClass: KClass<T>, val default: T?, v
     }
 
     private fun serializeToJson(value: T?): String? {
-        return Kotpref.ecGson.let {
+        return Kotpref.gson.let {
             if (it == null) throw IllegalStateException("Gson has not been set to Kotpref")
             if (Kotpref.cipherAdapter != null) {
                 return try {
@@ -44,7 +44,7 @@ class EcGsonNullablePref<T : Any>(val targetClass: KClass<T>, val default: T?, v
     }
 
     private fun deserializeFromJson(json: String): T? {
-        return Kotpref.ecGson.let {
+        return Kotpref.gson.let {
             if (it == null) throw IllegalStateException("Gson has not been set to Kotpref")
             if (Kotpref.cipherAdapter != null) {
                 return try {
